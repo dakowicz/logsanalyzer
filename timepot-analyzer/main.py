@@ -2,6 +2,8 @@ import datetime
 import itertools
 import os
 
+import matplotlib
+
 
 def to_dates_count(x, y):
     return x, len(list(y))
@@ -41,7 +43,7 @@ if __name__ == "__main__":
         aggregates.append(countOfDay)
     flatten = itertools.chain.from_iterable(aggregates)
     groupedByDate = group_by_date_and_count(flatten)
-    # x = matplotlib.dates.date2num([x for (x, y) in groupedByDate])
-    # matplotlib.pyplot.plot_date(x, [y for (_, y) in groupedByDate])
-    # matplotlib.pyplot.gcf().autofmt_xdate()
-    # matplotlib.pyplot.show()
+    x = matplotlib.dates.date2num([x for (x, y) in groupedByDate])
+    matplotlib.pyplot.plot_date(x, [y for (_, y) in groupedByDate])
+    matplotlib.pyplot.gcf().autofmt_xdate()
+    matplotlib.pyplot.show()
